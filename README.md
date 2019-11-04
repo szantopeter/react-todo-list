@@ -3,4 +3,4 @@
 # Todo applicatoin
 
 See the application here :
-https://szantopeter.github.io/react-todo-list
+https://szantopeter.github.io/react-todo-list/
