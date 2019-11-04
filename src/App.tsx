@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import AddTask from "./AddTask";
+import Task from "./Task";
+import TaskList from "./TaskList";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface State {
+  tasks: Task[];
+}
+
+class App extends React.Component<{}, State> {
+  state = {
+    tasks: [{ owner: "o", task: "t" }]
+  };
+
+  private onDelete = (index: number) => {
+    this.setState({
+      tasks: this.state.tasks.filter((task, index2) => index !== index2)
+    });
+  };
+
+  private onAdd = (task: Task) => {
+    this.setState({ tasks: [...this.state.tasks, task] });
+  };
+
+  render() {
+    return (
+      <div>
+        <AddTask onAdd={this.onAdd} />
+        <TaskList tasks={this.state.tasks} onDelete={this.onDelete} />
+      </div>
+    );
+  }
 }
 
 export default App;
