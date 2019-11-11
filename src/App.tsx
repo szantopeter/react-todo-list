@@ -10,7 +10,7 @@ interface State {
 
 class App extends React.Component<{}, State> {
   state = {
-    tasks: [{ owner: "o", task: "t" }]
+    tasks: []
   };
 
   private onDelete = (index: number) => {
