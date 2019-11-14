@@ -11,20 +11,22 @@ class AddTask extends Component<{ onAdd: (task: Task) => void }, Task> {
   render() {
     return (
       <div>
-        <label htmlFor="task">Task</label>
-        <input
-          id="task"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            this.setState({ ...this.state, task: event.target.value });
-          }}
-        />
-        <label htmlFor="owner">Owner</label>
-        <input
-          id="owner"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            this.setState({ ...this.state, owner: event.target.value });
-          }}
-        />
+        <label>
+          Owner
+          <input
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              this.setState({ ...this.state, owner: event.target.value });
+            }}
+          />
+        </label>
+        <label>
+          Task
+          <textarea
+            onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+              this.setState({ ...this.state, task: event.target.value });
+            }}
+          />
+        </label>
         <button onClick={() => this.props.onAdd(this.state)}>
           Add new task
         </button>

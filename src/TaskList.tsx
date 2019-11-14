@@ -6,14 +6,16 @@ export const TaskList: FunctionComponent<{
   tasks: Task[];
   onDelete: (index: number) => void;
 }> = ({ tasks, onDelete }) => (
-  <ul>
+  <div>
     {tasks.map((task: Task, index: number) => (
-      <li key={index}>
-        {task.owner}:{task.task}
+      <p key={index}>
+        @{task.owner}
+        <br />
+        {task.task}
         <button onClick={() => onDelete(index)}>X</button>
-      </li>
+      </p>
     ))}
-  </ul>
+  </div>
 );
 
 export default TaskList;

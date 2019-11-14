@@ -13,6 +13,6 @@ test("click adds a new task", () => {
   const { getByText } = render(<TaskList tasks={tasks} onDelete={onDelete} />);
 
   tasks.forEach(item => {
-    expect(getByText(item.owner + ":" + item.task)).not.toBeEmpty();
+    expect(getByText("@" + item.owner + item.task)).not.toBeEmpty();
   });
 });
