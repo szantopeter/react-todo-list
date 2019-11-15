@@ -11,16 +11,17 @@ interface State {
 class App extends React.Component<{}, State> {
   private static readonly TASKS = "tasks";
 
-  componentDidMount() {
+  constructor(props: {}) {
+    super(props);
     const storageTasks = localStorage.getItem(App.TASKS);
     if (storageTasks) {
-      this.setState(JSON.parse(storageTasks) as State);
+      this.state = JSON.parse(storageTasks) as State;
+    } else {
+      this.state = {
+        tasks: new Array<Task>()
+      };
     }
   }
-
-  state = {
-    tasks: new Array<Task>()
-  };
 
   private onDelete = (index: number) => {
     const newState = {
@@ -34,16 +35,26 @@ class App extends React.Component<{}, State> {
     this.persistState(newState);
   };
 
-  private persistState(newState: { tasks: Task[]; }) {
+  private persistState(newState: { tasks: Task[] }) {
     this.setState(newState);
     window.localStorage.setItem(App.TASKS, JSON.stringify(newState));
   }
+
+  onChange = (task: Task, index: number) => {
+    const newState = { tasks: [...this.state.tasks] };
+    newState.tasks[index] = task;
+    this.persistState(newState);
+  };
 
   render() {
     return (
       <div>
         <AddTask onAdd={this.onAdd} />
-        <TaskList tasks={this.state.tasks} onDelete={this.onDelete} />
+        <TaskList
+          tasks={this.state.tasks}
+          onDelete={this.onDelete}
+          onChange={this.onChange}
+        />
       </div>
     );
   }
