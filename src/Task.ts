@@ -1,8 +1,8 @@
 import React from "react";
 
 interface Task {
-  task: string;
-  owner: string;
+  body: string;
+  title: string;
 }
 
 export default Task;

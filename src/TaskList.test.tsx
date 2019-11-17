@@ -3,10 +3,10 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import TaskList from "./TaskList";
 
-test.skip("click adds a new task", () => {
+test("click adds a new task", () => {
   const tasks = [
-    { task: "task1", owner: "owner1" },
-    { task: "task2", owner: "owner2" }
+    { body: "task1", title: "owner1" },
+    { body: "task2", title: "owner2" }
   ];
   const onDelete = jest.fn();
   const onchange = jest.fn();
@@ -16,6 +16,7 @@ test.skip("click adds a new task", () => {
   );
 
   tasks.forEach(item => {
-    expect(getByText(item.owner + " X " + item.task)).not.toBeEmpty();
+    expect(getByText(item.title)).not.toBeEmpty();
+    expect(getByText(item.body)).not.toBeEmpty();
   });
 });
