@@ -11,12 +11,12 @@ test("click adds a new task", () => {
   const onDelete = jest.fn();
   const onchange = jest.fn();
 
-  const { getByText } = render(
+  const { getByDisplayValue } = render(
     <TaskList tasks={tasks} onDelete={onDelete} onChange={onchange} />
   );
 
   tasks.forEach(item => {
-    expect(getByText(item.title)).not.toBeEmpty();
-    expect(getByText(item.body)).not.toBeEmpty();
+    expect(getByDisplayValue(item.title)).not.toBeEmpty();
+    expect(getByDisplayValue(item.body)).not.toBeEmpty();
   });
 });

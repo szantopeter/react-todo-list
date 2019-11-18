@@ -13,7 +13,7 @@ code {
 }
 
 .task {
-  background: #fff;
+  background: rgb(241, 245, 7);
   border: 1px solid #999;
   border-radius: 3px;
   width: 180px;
@@ -23,6 +23,25 @@ code {
   display: flex;
 
   flex-direction: column;
+}
+.dragHandle p {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+.dragHandle {
+  background: #ddd;
+  border: 1px solid #999;
+  font-weight: bold;
+  cursor: move;
+  border-radius: 3px;
+  display: block;
+  margin-bottom: 10px;
+  padding: 3px 5px;
+  text-align: center;
+  float: left;
+  order: 1;
+  display: flex;
 }
 
 .taskHeader {
@@ -45,8 +64,8 @@ code {
 }
 
 .ownerName {
-  margin-right: 5px;
-  width: 137px;
+  margin-right: 15px;
+  width: 163px;
 }
 
 .deleteButton {
